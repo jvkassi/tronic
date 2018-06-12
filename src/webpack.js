@@ -1,7 +1,7 @@
-const ora = require('ora')
-const webpack = require('webpack')
-const config = require('./config')
-const { error, warning } = require('../utils/console')
+import ora from 'ora'
+import webpack from 'webpack'
+import config from './config'
+import { error } from './utils/console'
 
 let spinner
 
@@ -27,7 +27,7 @@ function callback(err, stats) {
   if (stats.hasWarnings()) {
     spinner.fail('Failed to bundle')
     console.log()
-    info.warnings.forEach(warning)
+    info.warnings.forEach(warning => console.log(warning))
     console.log()
   }
 
@@ -36,19 +36,18 @@ function callback(err, stats) {
 
 async function getCompiler() {
   const json = await config
+  console.log(json)
   return webpack(json)
 }
 
-const build = async () => {
+export async function build() {
   spinner = ora('Bundling').start()
   const compiler = await getCompiler()
   compiler.run(callback)
 }
 
-const watch = async () => {
+export async function watch() {
   spinner = ora('Bundling').start()
   const compiler = await getCompiler()
   compiler.watch({}, callback)
 }
-
-module.exports = { build, watch }

@@ -1,7 +1,5 @@
-const chalk = require('chalk')
+import chalk from 'chalk'
 
-const error = message => console.log(chalk.bold.red(message))
-const success = message => console.log(chalk.keyword('green')(message))
-const warning = message => console.log(chalk.green(message))
-
-module.exports = { error, success, warning }
+export const error = message => console.log(chalk.bold.red(message))
+export const success = message => console.log(chalk.green(message))
+export const warning = message => console.log(chalk.keyword('orange')(message))

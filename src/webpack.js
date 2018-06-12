@@ -1,6 +1,6 @@
 import ora from 'ora'
 import webpack from 'webpack'
-import config from './config'
+import buildConfig from './config/build-config'
 import { error } from './utils/console'
 
 let spinner
@@ -34,20 +34,15 @@ function callback(err, stats) {
   spinner.succeed('Bundled')
 }
 
-async function getCompiler() {
-  const json = await config
-  console.log(json)
-  return webpack(json)
-}
-
-export async function build() {
+export default function run(command, argv) {
   spinner = ora('Bundling').start()
-  const compiler = await getCompiler()
-  compiler.run(callback)
-}
-
-export async function watch() {
-  spinner = ora('Bundling').start()
-  const compiler = await getCompiler()
-  compiler.watch({}, callback)
+  const compiler = webpack(buildConfig(argv))
+  switch (command) {
+    case 'watch':
+      return compiler.watch({}, callback)
+    case 'build':
+      return compiler.run(callback)
+    default:
+      throw new Error('Invalid command')
+  }
 }

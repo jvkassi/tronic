@@ -6,4 +6,4 @@ const rule = {
   exclude: /node_modules/,
 }
 
-export default rule
+module.exports = rule

@@ -1,8 +1,8 @@
-import chalk from 'chalk'
-import ora from 'ora'
-import webpack from 'webpack'
+const chalk = require('chalk')
+const ora = require('ora')
+const webpack = require('webpack')
 
-import config from './config'
+const config = require('./config')
 
 function callback(spinner, err, stats) {
   if (err) {
@@ -33,7 +33,7 @@ function callback(spinner, err, stats) {
   spinner.succeed('Bundled')
 }
 
-export default function bundler(command) {
+function bundler(command) {
   const spinner = ora('Bundling').start()
   const compiler = webpack(config)
 
@@ -48,3 +48,5 @@ export default function bundler(command) {
       throw new Error('Invalid command')
   }
 }
+
+module.exports = bundler

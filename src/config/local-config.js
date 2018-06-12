@@ -1,5 +1,5 @@
-/* eslint-disable no-empty, import/no-mutable-exports */
-import resolvePath from '../utils/resolve-path'
+/* eslint-disable no-empty */
+const resolvePath = require('../utils/resolve-path')
 
 let localConfig = {}
 try {
@@ -7,4 +7,4 @@ try {
 } catch (e) {
 }
 
-export default localConfig
+module.exports = localConfig

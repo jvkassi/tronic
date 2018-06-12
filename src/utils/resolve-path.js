@@ -1,5 +1,5 @@
-import { resolve } from 'path'
+const { resolve } = require('path')
 
 const cwd = process.cwd()
 
-export default f => resolve(cwd, f)
+module.exports = f => resolve(cwd, f)

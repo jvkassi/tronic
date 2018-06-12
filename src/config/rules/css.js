@@ -1,4 +1,4 @@
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const use = ExtractTextPlugin.extract({
   fallback: 'style-loader',
@@ -10,4 +10,4 @@ const rule = {
   test: /\.css$/,
 }
 
-export default rule
+module.exports = rule

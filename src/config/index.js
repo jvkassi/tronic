@@ -1,11 +1,11 @@
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import merge from 'webpack-merge'
-import nodeExternals from 'webpack-node-externals'
-import yargs from 'yargs'
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const merge = require('webpack-merge')
+const nodeExternals = require('webpack-node-externals')
+const yargs = require('yargs')
 
-import { js, css, sass } from './rules'
-import localConfig from '../config/local-config'
-import resolvePath from '../utils/resolve-path'
+const { js, css, sass } = require('./rules')
+const localConfig = require('../config/local-config')
+const resolvePath = require('../utils/resolve-path')
 
 const env = process.env.NODE_ENV || 'development'
 const isDev = env === 'development'
@@ -40,4 +40,4 @@ if (config.target === 'node') {
   config.externals.push(nodeExternals())
 }
 
-export default config
+module.exports = config

@@ -1,3 +1,5 @@
-export { default as js } from './js'
-export { default as css } from './css'
-export { default as sass } from './sass'
+const js = require('./js')
+const css = require('./css')
+const sass = require('./sass')
+
+module.exports = { js, css, sass }

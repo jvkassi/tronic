@@ -13,7 +13,7 @@ const isDev = env === 'development'
 const defaultConfig = {
   devtool: isDev ? 'cheap-module-source-map' : false,
   mode: env,
-  entry: resolvePath('src/index.js'),
+  entry: [require.resolve('@babel/polyfill'), resolvePath('src/index.js')],
   output: {
     path: resolvePath('dist'),
     filename: 'bundle.js',

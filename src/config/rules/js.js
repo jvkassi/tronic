@@ -1,4 +1,4 @@
-const use = ['babel-loader', 'eslint-loader']
+const use = [require.resolve('babel-loader'), require.resolve('eslint-loader')]
 
 const rule = {
   use,

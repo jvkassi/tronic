@@ -17,8 +17,12 @@
     "url": "git+https://github.com/tronite/bundler.git"
   },
   "dependencies": {
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/polyfill": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
     "@tronite/eslint-config": "^1.0.0",
-    "babel-loader": "^7.1.4",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^8.0.0-beta.3",
     "chalk": "^2.4.1",
     "css-loader": "^0.28.11",
     "dotenv": "^6.0.0",

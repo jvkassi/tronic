@@ -1,8 +1,8 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const use = ExtractTextPlugin.extract({
-  fallback: 'style-loader',
-  use: ['css-loader', 'sass-loader'],
+  fallback: require.resolve('style-loader'),
+  use: [require.resolve('css-loader'), require.resolve('sass-loader')],
 })
 
 const rule = {

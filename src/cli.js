@@ -1,15 +1,12 @@
 import dotenv from 'dotenv'
 import yargs from 'yargs'
-import run from './webpack'
+
+import bundler from './bundler'
 
 dotenv.config()
 
-const builder = (args) => {
-  args.positional('target', { default: 'web' })
-}
-
 yargs
-  .command(['$0', 'start'], 'Start bundling', builder, argv => run('watch', argv))
-  .command('build', 'Run bundle', builder, argv => run('build', argv))
+  .command(['$0', 'start'], 'Start bundle', () => bundler('watch'))
+  .command('build', 'Run bundle', () => bundler('build'))
   .parse()
 

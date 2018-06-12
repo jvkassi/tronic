@@ -10,7 +10,7 @@
   "author": "Richard Solomou <richard@richardsolomou.com>",
   "main": "./src/index.js",
   "bin": {
-    "bundler": "./bin/cli.js"
+    "bundler": "./bin/bundler.js"
   },
   "repository": {
     "type": "git",

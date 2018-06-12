@@ -1,13 +1,12 @@
+import chalk from 'chalk'
 import ora from 'ora'
 import webpack from 'webpack'
-import buildConfig from './config/build-config'
-import { error } from './utils/console'
 
-let spinner
+import config from './config'
 
-function callback(err, stats) {
+function callback(spinner, err, stats) {
   if (err) {
-    error(err.stack || err)
+    console.log(chalk.bold.red(err.stack || err))
     if (err.details) {
       console.log(err.details)
     }
@@ -19,7 +18,7 @@ function callback(err, stats) {
   if (stats.hasErrors()) {
     spinner.fail('Failed to bundle')
     console.log()
-    info.errors.forEach(error)
+    info.errors.forEach(error => console.log(chalk.bold.red(error)))
     console.log()
     return
   }
@@ -34,14 +33,17 @@ function callback(err, stats) {
   spinner.succeed('Bundled')
 }
 
-export default function run(command, argv) {
-  spinner = ora('Bundling').start()
-  const compiler = webpack(buildConfig(argv))
+export default function bundler(command) {
+  const spinner = ora('Bundling').start()
+  const compiler = webpack(config)
+
   switch (command) {
     case 'watch':
-      return compiler.watch({}, callback)
+      compiler.watch({}, callback.bind(null, spinner))
+      break
     case 'build':
-      return compiler.run(callback)
+      compiler.run(callback.bind(null, spinner))
+      break
     default:
       throw new Error('Invalid command')
   }

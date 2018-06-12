@@ -4,6 +4,7 @@
   "rules": {
     "global-require": "off",
     "import/no-dynamic-require": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "no-mixed-operators": "off"
   }
 }

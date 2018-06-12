@@ -1,36 +1,12 @@
-#!/usr/bin/env node
-require('dotenv').config()
-const ora = require('ora')
-const webpack = require('webpack')
+const dotenv = require('dotenv')
 const yargs = require('yargs')
-const config = require('./config')
+const { build, watch } = require('./webpack')
 
-const compiler = webpack(config)
-
-let spinner
-
-const callback = (err, stats) => {
-  if (err || stats.hasErrors()) {
-    spinner.fail('Failed to bundle')
-    console.log()
-    console.log(stats.toString({ colors: true }))
-    console.log()
-    return
-  }
-  spinner.succeed('Bundled')
-}
+dotenv.config()
 
 yargs
-  .command('build', 'Run bundle', () => {
-    spinner = ora('Bundling').start()
-    compiler.run(callback)
-  })
-  .command('$0', 'Start bundling', () => {
-    spinner = ora('Bundling').start()
-    compiler.watch({}, callback)
-  })
-  .command('start', 'Start bundling', () => {
-    spinner = ora('Bundling').start()
-    compiler.watch({}, callback)
-  })
+  .command('$0', 'Start bundling', () => { (watch)().then() })
+  .command('start', 'Start bundling', () => { (watch)().then() })
+  .command('build', 'Run bundle', () => { (build)().then() })
   .parse()
+

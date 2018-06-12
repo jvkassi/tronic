@@ -20,7 +20,6 @@
     "@babel/core": "^7.0.0-beta.49",
     "@babel/polyfill": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
-    "@babel/preset-stage-0": "^7.0.0-beta.49",
     "@babel/register": "^7.0.0-beta.49",
     "@tronite/eslint-config": "^1.0.0",
     "autoprefixer": "^8.6.2",

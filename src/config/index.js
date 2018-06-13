@@ -2,10 +2,9 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import merge from 'webpack-merge'
 import nodeExternals from 'webpack-node-externals'
 import yargs from 'yargs'
-import { resolveFromCwd, resolveModulePath } from '../utils'
-
 import localConfig from '../config/local-config'
 import { js, json, css, sass } from './rules'
+import { resolveFromCwd, resolveModulePath } from '../utils'
 
 const env = process.env.NODE_ENV || 'development'
 const isDev = env === 'development'

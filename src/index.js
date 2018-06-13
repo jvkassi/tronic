@@ -1,15 +1,14 @@
 import dotenv from 'dotenv'
 import yargs from 'yargs'
-
-import bundler from './bundler'
+import build from './build'
 import lint from './lint'
+import start from './start'
 
 dotenv.config()
 
 yargs
-  .command('$0', 'Start bundle', () => bundler('watch'))
-  .command('start', 'Start bundle', () => bundler('watch'))
-  .command('build', 'Run bundle', () => bundler('build'))
+  .command(['$0', 'start'], 'Start bundle', start)
+  .command('build', 'Run bundle', build)
   .command('lint', 'Lint', lint)
   .parse()
 

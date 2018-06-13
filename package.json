@@ -17,18 +17,19 @@
     "url": "git+https://github.com/tronite/tronic.git"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.babel.js --config-register @babel/register",
+    "build": "BABEL_TARGET=node babel src -d dist",
     "prepare": "npm run build"
   },
   "dependencies": {
+    "@babel/cli": "^7.0.0-beta.51",
     "@babel/core": "^7.0.0-beta.49",
     "@babel/polyfill": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
     "@babel/preset-stage-0": "^7.0.0-beta.51",
-    "@babel/register": "^7.0.0-beta.51",
     "@tronite/eslint-config": "^1.0.0",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^8.0.0-beta.3",
+    "babel-plugin-async-import": "^2.0.1",
     "chalk": "^2.4.1",
     "css-loader": "^0.28.11",
     "dotenv": "^6.0.0",

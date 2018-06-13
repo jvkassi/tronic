@@ -1,11 +1,10 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import { resolveModulePath } from '../utils'
 
 export const js = {
   test: /\.js$/,
   use: [
     {
-      loader: resolveModulePath('babel-loader'),
+      loader: require.resolve('babel-loader'),
       options: {
         cacheDirectory: true,
         presets: [
@@ -14,28 +13,28 @@ export const js = {
         ],
       },
     },
-    resolveModulePath('eslint-loader'),
+    require.resolve('eslint-loader'),
   ],
   exclude: /node_modules/,
 }
 
 export const json = {
   test: /\.json$/,
-  use: resolveModulePath('json-loader'),
+  use: require.resolve('json-loader'),
 }
 
 export const css = {
   test: /\.css$/,
   use: ExtractTextPlugin.extract({
-    fallback: resolveModulePath('style-loader'),
-    use: resolveModulePath('css-loader'),
+    fallback: require.resolve('style-loader'),
+    use: require.resolve('css-loader'),
   }),
 }
 
 export const sass = {
   test: /\.scss$/,
   use: ExtractTextPlugin.extract({
-    fallback: resolveModulePath('style-loader'),
-    use: [resolveModulePath('css-loader'), resolveModulePath('sass-loader')],
+    fallback: require.resolve('style-loader'),
+    use: [require.resolve('css-loader'), require.resolve('sass-loader')],
   }),
 }

@@ -2,5 +2,8 @@
   "presets": [
     "@babel/preset-env",
     ["@babel/preset-stage-0", { "decoratorsLegacy": true }]
+  ],
+  "plugins": [
+    "async-import"
   ]
 }

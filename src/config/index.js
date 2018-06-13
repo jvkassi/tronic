@@ -12,6 +12,7 @@ const isDev = env === 'development'
 
 const defaultConfig = {
   devtool: isDev ? 'cheap-module-source-map' : false,
+  cache: true,
   mode: env,
   entry: [resolveModulePath('@babel/polyfill'), resolveFromCwd('src/index.js')],
   output: {
@@ -28,12 +29,12 @@ const defaultConfig = {
   ],
 }
 
-const { devtool, mode, target } = yargs.argv
+const { mode, target } = yargs.argv
 
 const config = merge(
   defaultConfig,
   localConfig,
-  { devtool, mode, target },
+  { mode, target },
 )
 
 if (config.target === 'node') {

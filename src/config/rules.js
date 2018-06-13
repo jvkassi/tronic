@@ -7,6 +7,7 @@ export const js = {
     {
       loader: resolveModulePath('babel-loader'),
       options: {
+        cacheDirectory: true,
         presets: [
           '@babel/preset-env',
           ['@babel/preset-stage-0', { decoratorsLegacy: true }],

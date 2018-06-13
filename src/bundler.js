@@ -3,7 +3,7 @@ import webpack from 'webpack'
 import config from './config'
 import output from './output'
 
-export default function tronic(command) {
+export default function bundler(command) {
   const compiler = webpack(config)
 
   switch (command) {

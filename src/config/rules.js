@@ -4,7 +4,15 @@ import { resolveModulePath } from '../utils'
 export const js = {
   test: /\.js$/,
   use: [
-    resolveModulePath('babel-loader'),
+    {
+      loader: resolveModulePath('babel-loader'),
+      options: {
+        presets: [
+          '@babel/preset-env',
+          ['@babel/preset-stage-0', { decoratorsLegacy: true }],
+        ],
+      },
+    },
     resolveModulePath('eslint-loader'),
   ],
   exclude: /node_modules/,

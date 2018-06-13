@@ -1,7 +1,7 @@
-const chalk = require('chalk')
-const ora = require('ora')
+import chalk from 'chalk'
+import ora from 'ora'
 
-function output(err, stats) {
+export default function output(err, stats) {
   const spinner = ora('Bundling').start()
 
   if (err) {
@@ -31,5 +31,3 @@ function output(err, stats) {
 
   spinner.succeed('Bundled')
 }
-
-module.exports = output

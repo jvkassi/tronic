@@ -1,6 +1,6 @@
 {
   "name": "tronic",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.5",
   "description": "Framework-agnostic webpack bundler with sensible defaults",
   "homepage": "https://github.com/tronite/tronic#readme",
   "bugs": {
@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "author": "Richard Solomou <richard@richardsolomou.com>",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "bin": {
     "tronic": "./bin/tronic.js"
   },
@@ -16,10 +16,16 @@
     "type": "git",
     "url": "git+https://github.com/tronite/tronic.git"
   },
+  "scripts": {
+    "build": "webpack --config webpack.config.babel.js --config-register @babel/register",
+    "prepare": "npm run build"
+  },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.49",
     "@babel/polyfill": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/preset-stage-0": "^7.0.0-beta.51",
+    "@babel/register": "^7.0.0-beta.51",
     "@tronite/eslint-config": "^1.0.0",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^8.0.0-beta.3",

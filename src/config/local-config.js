@@ -1,10 +1,10 @@
-/* eslint-disable no-empty */
-const { resolve } = require('path')
+/* eslint-disable no-empty, import/no-mutable-exports */
+import { resolveFromCwd } from '../utils'
 
 let localConfig = {}
 try {
-  localConfig = require(`${resolve(process.cwd(), 'webpack.config.js')}`)
+  localConfig = require(`${resolveFromCwd('webpack.config.js')}`)
 } catch (e) {
 }
 
-module.exports = localConfig
+export default localConfig

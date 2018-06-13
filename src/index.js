@@ -1,8 +1,10 @@
-require('dotenv').config()
-const yargs = require('yargs')
+import dotenv from 'dotenv'
+import yargs from 'yargs'
 
-const tronic = require('./tronic')
-const lint = require('./lint')
+import tronic from './tronic'
+import lint from './lint'
+
+dotenv.config()
 
 yargs
   .command('$0', 'Start bundle', () => tronic('watch'))

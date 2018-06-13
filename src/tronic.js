@@ -1,9 +1,9 @@
-const webpack = require('webpack')
+import webpack from 'webpack'
 
-const config = require('./config')
-const output = require('./output')
+import config from './config'
+import output from './output'
 
-function tronic(command) {
+export default function tronic(command) {
   const compiler = webpack(config)
 
   switch (command) {
@@ -17,5 +17,3 @@ function tronic(command) {
       throw new Error('Invalid command')
   }
 }
-
-module.exports = tronic

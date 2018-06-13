@@ -1,40 +1,32 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import { resolveModulePath } from '../utils'
 
-const js = {
+export const js = {
   test: /\.js$/,
   use: [
-    {
-      loader: require.resolve('babel-loader'),
-      options: {
-        extends: require.resolve('../../.babelrc'),
-      },
-    },
-    require.resolve('eslint-loader'),
+    resolveModulePath('babel-loader'),
+    resolveModulePath('eslint-loader'),
   ],
   exclude: /node_modules/,
 }
 
-const json = {
+export const json = {
   test: /\.json$/,
-  use: require.resolve('json-loader'),
+  use: resolveModulePath('json-loader'),
 }
 
-const css = {
+export const css = {
   test: /\.css$/,
   use: ExtractTextPlugin.extract({
-    fallback: require.resolve('style-loader'),
-    use: require.resolve('css-loader'),
+    fallback: resolveModulePath('style-loader'),
+    use: resolveModulePath('css-loader'),
   }),
 }
 
-const sass = {
+export const sass = {
   test: /\.scss$/,
   use: ExtractTextPlugin.extract({
-    fallback: require.resolve('style-loader'),
-    use: [require.resolve('css-loader'), require.resolve('sass-loader')],
+    fallback: resolveModulePath('style-loader'),
+    use: [resolveModulePath('css-loader'), resolveModulePath('sass-loader')],
   }),
-}
-
-module.exports = {
-  js, json, css, sass,
 }

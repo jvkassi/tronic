@@ -1,13 +1,11 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const merge = require('webpack-merge')
-const nodeExternals = require('webpack-node-externals')
-const yargs = require('yargs')
-const { resolve } = require('path')
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import merge from 'webpack-merge'
+import nodeExternals from 'webpack-node-externals'
+import yargs from 'yargs'
+import { resolveFromCwd, resolveModulePath } from '../utils'
 
-const localConfig = require('../config/local-config')
-const {
-  js, json, css, sass,
-} = require('./rules')
+import localConfig from '../config/local-config'
+import { js, json, css, sass } from './rules'
 
 const env = process.env.NODE_ENV || 'development'
 const isDev = env === 'development'
@@ -15,9 +13,9 @@ const isDev = env === 'development'
 const defaultConfig = {
   devtool: isDev ? 'cheap-module-source-map' : false,
   mode: env,
-  entry: [require.resolve('@babel/polyfill'), resolve(process.cwd(), 'src/index.js')],
+  entry: [resolveModulePath('@babel/polyfill'), resolveFromCwd('src/index.js')],
   output: {
-    path: resolve(process.cwd(), 'dist'),
+    path: resolveFromCwd('dist'),
     filename: 'bundle.js',
   },
   target: 'web',
@@ -42,4 +40,4 @@ if (config.target === 'node') {
   config.externals.push(nodeExternals())
 }
 
-module.exports = config
+export default config

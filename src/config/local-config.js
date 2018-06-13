@@ -1,9 +1,9 @@
 /* eslint-disable no-empty */
-const resolvePath = require('../utils/resolve-path')
+const { resolve } = require('path')
 
 let localConfig = {}
 try {
-  localConfig = require(`${resolvePath('webpack.config.js')}`)
+  localConfig = require(`${resolve(process.cwd(), 'webpack.config.js')}`)
 } catch (e) {
 }
 

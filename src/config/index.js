@@ -2,10 +2,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const merge = require('webpack-merge')
 const nodeExternals = require('webpack-node-externals')
 const yargs = require('yargs')
+const { resolve } = require('path')
 
-const { js, css, sass } = require('./rules')
 const localConfig = require('../config/local-config')
-const resolvePath = require('../utils/resolve-path')
+const {
+  js, json, css, sass,
+} = require('./rules')
 
 const env = process.env.NODE_ENV || 'development'
 const isDev = env === 'development'
@@ -13,15 +15,15 @@ const isDev = env === 'development'
 const defaultConfig = {
   devtool: isDev ? 'cheap-module-source-map' : false,
   mode: env,
-  entry: [require.resolve('@babel/polyfill'), resolvePath('src/index.js')],
+  entry: [require.resolve('@babel/polyfill'), resolve(process.cwd(), 'src/index.js')],
   output: {
-    path: resolvePath('dist'),
+    path: resolve(process.cwd(), 'dist'),
     filename: 'bundle.js',
   },
   target: 'web',
   externals: [],
   module: {
-    rules: [js, css, sass],
+    rules: [js, json, css, sass],
   },
   plugins: [
     new ExtractTextPlugin('bundle.css'),

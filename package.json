@@ -1,20 +1,20 @@
 {
-  "name": "@tronite/bundler",
+  "name": "tronic",
   "version": "1.0.0",
-  "description": "Bundler",
-  "homepage": "https://github.com/tronite/bundler#readme",
+  "description": "Framework-agnostic webpack bundler with sensible defaults",
+  "homepage": "https://github.com/tronite/tronic#readme",
   "bugs": {
-    "url": "https://github.com/tronite/bundler/issues"
+    "url": "https://github.com/tronite/tronic/issues"
   },
   "license": "MIT",
   "author": "Richard Solomou <richard@richardsolomou.com>",
   "main": "./src/index.js",
   "bin": {
-    "bundler": "./bin/bundler.js"
+    "tronic": "./bin/tronic.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tronite/bundler.git"
+    "url": "git+https://github.com/tronite/tronic.git"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.49",

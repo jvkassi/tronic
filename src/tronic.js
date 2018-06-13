@@ -33,7 +33,7 @@ function callback(spinner, err, stats) {
   spinner.succeed('Bundled')
 }
 
-function bundler(command) {
+function tronic(command) {
   const spinner = ora('Bundling').start()
   const compiler = webpack(config)
 
@@ -49,4 +49,4 @@ function bundler(command) {
   }
 }
 
-module.exports = bundler
+module.exports = tronic

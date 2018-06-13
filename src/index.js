@@ -1,13 +1,13 @@
 require('dotenv').config()
 const yargs = require('yargs')
 
-const bundler = require('./bundler')
+const tronic = require('./tronic')
 const lint = require('./lint')
 
 yargs
-  .command('$0', 'Start bundle', () => bundler('watch'))
-  .command('start', 'Start bundle', () => bundler('watch'))
-  .command('build', 'Run bundle', () => bundler('build'))
+  .command('$0', 'Start bundle', () => tronic('watch'))
+  .command('start', 'Start bundle', () => tronic('watch'))
+  .command('build', 'Run bundle', () => tronic('build'))
   .command('lint', 'Lint', lint)
   .parse()
 

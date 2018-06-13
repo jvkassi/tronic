@@ -3,7 +3,7 @@ const resolvePath = require('../utils/resolve-path')
 
 let localConfig = {}
 try {
-  localConfig = require(`${resolvePath('.bundler.js')}`)
+  localConfig = require(`${resolvePath('webpack.config.js')}`)
 } catch (e) {
 }
 

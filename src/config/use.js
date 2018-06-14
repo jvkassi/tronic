@@ -1,36 +1,31 @@
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import merge from 'webpack-merge'
+import tronicBABEL from 'tronic-babel'
+import tronicCSS from 'tronic-css'
+import tronicJSON from 'tronic-json'
+import tronicSASS from 'tronic-sass'
 import yargs from 'yargs'
-import * as rules from './rules'
 
-const whitelist = Object.keys(rules)
-let { use = [] } = yargs.argv
-if (!Array.isArray(use)) {
-  use = use.split(',')
+const whitelist = ['babel', 'css', 'json', 'sass']
+let { useArg = [] } = yargs.argv
+if (!Array.isArray(useArg)) {
+  useArg = useArg.split(',')
 }
-use.forEach((rule) => {
+useArg.forEach((rule) => {
   if (!whitelist.includes(rule)) {
     throw new Error('Invalid use parameter')
   }
 })
 
-const includeJS = use.includes('js')
-const includeJSON = use.includes('json')
-const includeCSS = use.includes('css')
-const includeSASS = use.includes('sass')
+const includeBABEL = useArg.includes('babel')
+const includeCSS = useArg.includes('css')
+const includeJSON = useArg.includes('json')
+const includeSASS = useArg.includes('sass')
 
-export default {
-  entry: [
-    includeJS && require.resolve('@babel/polyfill'),
-  ].filter(Boolean),
-  module: {
-    rules: [
-      includeJS && rules.js,
-      includeJSON && rules.json,
-      includeCSS && rules.css,
-      includeSASS && rules.sass,
-    ].filter(Boolean),
-  },
-  plugins: [
-    (includeCSS || includeSASS) && new ExtractTextPlugin('bundle.css'),
-  ].filter(Boolean),
-}
+const use = merge.smart(
+  includeBABEL && tronicBABEL,
+  includeCSS && tronicCSS,
+  includeJSON && tronicJSON,
+  includeSASS && tronicSASS,
+)
+
+export default use

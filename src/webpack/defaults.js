@@ -18,4 +18,7 @@ export default {
     rules: [],
   },
   plugins: [],
+  resolve: {
+    extensions: ['.js'],
+  },
 }

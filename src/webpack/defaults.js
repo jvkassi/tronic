@@ -3,7 +3,7 @@ import { resolveFromCwd } from '../utils'
 const env = process.env.NODE_ENV || 'development'
 const isDev = env === 'development'
 
-const defaults = {
+export default {
   devtool: isDev ? 'cheap-module-source-map' : false,
   cache: true,
   mode: env,
@@ -19,5 +19,3 @@ const defaults = {
   },
   plugins: [],
 }
-
-export default defaults

@@ -26,25 +26,16 @@ tronic build
 
 tronic ships with default settings for popular use cases but can be further extended using a `webpack.config.js` file at the root of your project. tronic will then merge your local configuration with its defaults to produce a bundle.
 
+You can further extend tronic with plugins by creating a file named `tronic.config.js` at the root of your project, with the following content:
+
+```javascript
+module.exports = {
+  plugins: ['babel', 'sass']
+}
+```
+
 ## Defaults
 
 Entrypoint is `src/index.js`
 
 Bundle output happens in `dist` folder
-
-## Arguments
-
-tronic's CLI accepts a `use` flag which determines which defaults it starts out with.
-
-Currently accepted options are `js`, `json`, `css`, and `sass`.
-
-You can use any of the below formats to trigger this:
-
-```bash
-tronic --use js --use css
-tronic --use=js --use=css
-tronic --use=js,css
-tronic --use=js,json,css,sass
-```
-
-This flag also works with the `build` command.

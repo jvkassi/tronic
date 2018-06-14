@@ -4,6 +4,8 @@
   "rules": {
     "global-require": "off",
     "import/no-dynamic-require": "off",
-    "no-console": "off"
+    "import/no-mutable-exports": "off",
+    "no-console": "off",
+    "no-empty": "off"
   }
 }

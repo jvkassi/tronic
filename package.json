@@ -17,7 +17,7 @@
     "url": "git+https://github.com/tronite/tronic.git"
   },
   "scripts": {
-    "prepare": "babel src -d dist"
+    "prepare": "rm -rf dist && babel src -d dist"
   },
   "dependencies": {
     "chalk": "^2.4.1",

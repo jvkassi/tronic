@@ -47,7 +47,11 @@ You can further extend tronic with plugins by creating a file named `tronic.conf
 
 ```javascript
 module.exports = {
-  plugins: ['babel', 'sass']
+  plugins: [
+    'babel',
+    'sass',
+    ['html', { options: { ... } }]
+  ]
 }
 ```
 

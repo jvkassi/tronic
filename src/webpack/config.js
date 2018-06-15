@@ -9,7 +9,8 @@ const tronic = importIfExists(resolveCwd('tronic.config.js'))
 if (tronic) {
   tronic.plugins = tronic.plugins || []
   tronic.plugins.forEach((plugin) => {
-    const name = `tronic-plugin-${plugin}`
+    const isArray = Array.isArray(plugin)
+    const name = `tronic-plugin-${isArray ? plugin[0] : plugin}`
     const module = importIfExists(name)
     if (!module) {
       throw new Error(`Plugin "${name}" could not be found`)
@@ -17,7 +18,7 @@ if (tronic) {
     if (typeof module !== 'function') {
       throw new Error(`Plugin "${name}" is not a function`)
     }
-    config = module(config)
+    config = module(config, isArray && plugin[1])
   })
 }
 

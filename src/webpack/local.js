@@ -1,6 +1,6 @@
-import { importIfExists, resolveFromCwd } from '../utils'
+import { importIfExists, resolveCwd } from '../utils'
 
-const webpackConfig = importIfExists(resolveFromCwd('webpack.config.js'))
-const webpackConfigBabel = importIfExists(resolveFromCwd('webpack.config.babel.js'))
+const webpackConfig = importIfExists(resolveCwd('webpack.config.js'))
+const webpackConfigBabel = importIfExists(resolveCwd('webpack.config.babel.js'))
 
 export default webpackConfig || webpackConfigBabel || {}

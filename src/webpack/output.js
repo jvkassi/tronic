@@ -1,9 +1,6 @@
 import chalk from 'chalk'
-import ora from 'ora'
 
-export default function output(err, stats) {
-  const spinner = ora('Bundling').start()
-
+export default function output(spinner, err, stats) {
   if (err) {
     console.log(chalk.bold.red(err.stack || err))
     if (err.details) {

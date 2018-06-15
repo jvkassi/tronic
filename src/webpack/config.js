@@ -1,10 +1,10 @@
 import merge from 'webpack-merge'
 import { defaults, local } from '../webpack'
-import { importIfExists, resolveFromCwd } from '../utils'
+import { importIfExists, resolveCwd } from '../utils'
 
 let config = merge(defaults, local)
 
-const tronic = importIfExists(resolveFromCwd('tronic.config.js'))
+const tronic = importIfExists(resolveCwd('tronic.config.js'))
 
 if (tronic) {
   tronic.plugins = tronic.plugins || []

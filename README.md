@@ -36,6 +36,6 @@ module.exports = {
 
 ## Defaults
 
-Entrypoint is `src/index.js`
+Entrypoint is the `main` property in your `package.json` or `src/index.js` if that's missing
 
 Bundle output happens in `dist` folder

@@ -21,6 +21,4 @@ if (tronic) {
   })
 }
 
-console.log(config)
-
 export default config

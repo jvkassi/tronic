@@ -1,6 +1,5 @@
 import webpack from 'webpack'
-import config from '../webpack/config'
-import output from '../utils/output'
+import { config, output } from '../webpack'
 
 export default function start() {
   const compiler = webpack(config)

@@ -17,12 +17,8 @@ const plugins = findPlugins({
 plugins.forEach((plugin) => {
   const identifier = plugin.pkg.name.split('tronic-plugin-')[1]
   const module = importIfExists(plugin.pkg.name)
-  if (Object.hasOwnProperty.call(tronic.plugins, identifier)) {
-    const options = tronic.plugins[identifier]
-    config = module(config, options)
-    return
-  }
-  config = module(config)
+  const options = Object.hasOwnProperty.call(tronic.plugins, identifier) ? tronic.plugins[identifier] : {}
+  config = module(config, options)
 })
 
 export default config

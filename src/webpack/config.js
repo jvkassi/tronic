@@ -11,22 +11,18 @@ let config = merge(defaults, tronic.webpack)
 
 const plugins = findPlugins({
   includeDev: true,
-  filter: dir => /^tronic-plugin-/.test(dir.pkg.name),
+  filter: plugin => /^tronic-plugin-/.test(plugin.pkg.name),
 })
 
-console.log(plugins)
-
-Object.keys(tronic.plugins).forEach((identifier) => {
-  const name = `tronic-plugin-${identifier}`
-  const options = tronic.plugins[identifier]
-  if (!options) {
-    return
+plugins.forEach((plugin) => {
+  const identifier = plugin.pkg.name.split('tronic-plugin-')[1]
+  const module = importIfExists(plugin.pkg.name)
+  if (Object.hasOwnProperty.call(tronic.plugins, identifier)) {
+    const options = tronic.plugins[identifier]
+    config = module(config, options)
+    return true
   }
-  const module = importIfExists(name)
-  if (!module) {
-    throw new Error(`Plugin "${identifier}" could not be found`)
-  }
-  config = module(config, options)
+  config = module(config)
 })
 
 export default config

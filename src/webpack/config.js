@@ -10,9 +10,8 @@ tronic.plugins = tronic.plugins || {}
 let config = merge(defaults, tronic.webpack)
 
 const plugins = findPlugins({
-  filter(pkg) {
-    return /^tronic-plugin-/.test(pkg.name)
-  },
+  includeDev: true,
+  filter: dir => /^tronic-plugin-/.test(dir.pkg.name),
 })
 
 console.log(plugins)

@@ -10,7 +10,7 @@ let config = merge(defaults, tronic.webpack)
 
 Object.keys(tronic.plugins).forEach((identifier) => {
   const name = `tronic-plugin-${identifier}`
-  const options = tronic.plugins[name]
+  const options = tronic.plugins[identifier]
   if (!options) {
     return
   }
@@ -18,7 +18,7 @@ Object.keys(tronic.plugins).forEach((identifier) => {
   if (!module) {
     throw new Error(`Plugin "${identifier}" could not be found`)
   }
-  config = module(config, options !== true ? options : {})
+  config = module(config, options)
 })
 
 export default config

@@ -1,25 +1,24 @@
 import merge from 'webpack-merge'
-import { defaults, local } from '../webpack'
+import { defaults } from '../webpack'
 import { importIfExists, resolveCwd } from '../utils'
 
-let config = merge(defaults, local)
+const tronic = importIfExists(resolveCwd('tronic.config.js')) || {}
+tronic.webpack = tronic.webpack || {}
+tronic.plugins = tronic.plugins || {}
 
-const tronic = importIfExists(resolveCwd('tronic.config.js'))
+let config = merge(defaults, tronic.webpack)
 
-if (tronic) {
-  tronic.plugins = tronic.plugins || []
-  tronic.plugins.forEach((plugin) => {
-    const isArray = Array.isArray(plugin)
-    const name = `tronic-plugin-${isArray ? plugin[0] : plugin}`
-    const module = importIfExists(name)
-    if (!module) {
-      throw new Error(`Plugin "${name}" could not be found`)
-    }
-    if (typeof module !== 'function') {
-      throw new Error(`Plugin "${name}" is not a function`)
-    }
-    config = module(config, isArray && plugin[1])
-  })
-}
+Object.keys(tronic.plugins).forEach((identifier) => {
+  const name = `tronic-plugin-${identifier}`
+  const options = tronic.plugins[name]
+  if (!options) {
+    return
+  }
+  const module = importIfExists(name)
+  if (!module) {
+    throw new Error(`Plugin "${identifier}" could not be found`)
+  }
+  config = module(config, options !== true ? options : {})
+})
 
 export default config

@@ -1,8 +1,10 @@
 import { joinCwd, importIfExists, resolveCwd } from '../utils'
 
+// Set environment variables
 const env = process.env.NODE_ENV || 'development'
 const isDev = env === 'development'
 
+// Set application entrypoint based on package.json
 const pkg = importIfExists(resolveCwd('package.json'))
 const entry = pkg.main || 'src/index.js'
 

@@ -20,7 +20,7 @@ plugins.forEach((plugin) => {
   if (Object.hasOwnProperty.call(tronic.plugins, identifier)) {
     const options = tronic.plugins[identifier]
     config = module(config, options)
-    return true
+    return
   }
   config = module(config)
 })

@@ -1,3 +1,4 @@
+import findPlugins from 'find-plugins'
 import merge from 'webpack-merge'
 import { defaults } from '../webpack'
 import { importIfExists, resolveCwd } from '../utils'
@@ -7,6 +8,14 @@ tronic.webpack = tronic.webpack || {}
 tronic.plugins = tronic.plugins || {}
 
 let config = merge(defaults, tronic.webpack)
+
+const plugins = findPlugins({
+  filter(pkg) {
+    return /^tronic-plugin-/.test(pkg.name)
+  },
+})
+
+console.log(plugins)
 
 Object.keys(tronic.plugins).forEach((identifier) => {
   const name = `tronic-plugin-${identifier}`

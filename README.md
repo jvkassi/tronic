@@ -41,17 +41,27 @@ You can generate a one-off build using `npm run build`, and a watching build usi
 
 ## Configuration
 
-tronic ships with default settings for popular use cases but can be further extended using a `webpack.config.js` file at the root of your project. tronic will then merge your local configuration with its defaults to produce a bundle.
+tronic ships with default webpack settings for popular use cases and can be extended by utilising the `tronic.config.js` file at the root of your project. tronic will then merge your local configuration with its webpack defaults to produce a bundle.
 
-You can further extend tronic with plugins by creating a file named `tronic.config.js` at the root of your project, with the following content:
+You can further extend tronic with in-house and community-created plugins as below. Each plugin ships with its own set of defaults similar to the default webpack config that comes pre-built in tronic.
+
+A list of available plugins exists at https://github.com/tronite/tronic-plugins.
 
 ```javascript
 module.exports = {
   plugins: [
-    'babel',
-    'sass',
-    ['html', { options: { ... } }]
-  ]
+    { name: 'babel' },
+    { name: 'sass' },
+    { name: 'html', { htmlWebpackPlugin: { ... } } }
+  ],
+  webpack: {
+    devServer: {
+      contentBase: __dirname
+    },
+    output: {
+      path: __dirname
+    }
+  }
 }
 ```
 

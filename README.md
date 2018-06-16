@@ -52,7 +52,7 @@ module.exports = {
   plugins: [
     { name: 'babel' },
     { name: 'sass' },
-    { name: 'html', { htmlWebpackPlugin: { ... } } }
+    { name: 'html', options: { htmlWebpackPlugin: { ... } } }
   ],
   webpack: {
     devServer: {

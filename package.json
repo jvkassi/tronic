@@ -8,9 +8,9 @@
   },
   "license": "MIT",
   "author": "Richard Solomou <richard@richardsolomou.com>",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "bin": {
-    "tronic": "./bin/tronic.js"
+    "tronic": "bin/tronic.js"
   },
   "repository": {
     "type": "git",

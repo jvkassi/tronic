@@ -6,8 +6,8 @@ import { defaults } from '../webpack'
 
 // Get config
 const tronic = requireIfExists(resolve(process.cwd(), 'tronic.config.js')) || {}
-tronic.plugins = tronic.plugins || {}
 tronic.webpack = tronic.webpack || {}
+tronic.plugins = tronic.plugins || []
 
 // Deep merge config with defaults
 let config = merge(defaults, tronic.webpack)

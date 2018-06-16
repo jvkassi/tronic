@@ -1,5 +1,5 @@
 module.exports = {
   plugins: [
-    { name: 'typescript' },
+    'typescript',
   ],
 }

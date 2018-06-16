@@ -14,13 +14,14 @@ let config = merge(defaults, tronic.webpack)
 
 // Load and initialise plugins in order
 tronic.plugins.forEach((plugin) => {
-  const name = `tronic-plugin-${plugin.name}`
+  const isObject = typeof plugin === 'object'
+  const name = `tronic-plugin-${isObject ? plugin.name : plugin}`
   const module = requireIfExists(resolve(nodeModulesPath(process.cwd()), name))
   if (!module) {
     console.log(`Plugin "${name}" not installed`)
     return
   }
-  config = module(config, plugin.options)
+  config = module(config, isObject ? plugin.options : undefined)
 })
 
 export default config

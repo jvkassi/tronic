@@ -5,7 +5,7 @@
     "jquery": "^3.3.1"
   },
   "devDependencies": {
-    "tronic": "^1.0.14",
-    "tronic-plugin-typescript": "^1.0.1"
+    "tronic": "latest",
+    "tronic-plugin-typescript": "latest"
   }
 }

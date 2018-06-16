@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "tronic": "^1.0.14",
-    "tronic-plugin-html": "^1.0.5"
+    "tronic": "latest",
+    "tronic-plugin-html": "latest"
   }
 }

@@ -50,8 +50,8 @@ A list of available plugins exists at https://github.com/tronite/tronic-plugins.
 ```javascript
 module.exports = {
   plugins: [
-    { name: 'babel' },
-    { name: 'sass' },
+    'babel',
+    'sass',
     { name: 'html', options: { htmlWebpackPlugin: { ... } } }
   ],
   webpack: {

@@ -1,5 +1,5 @@
 module.exports = {
   plugins: [
-    { name: 'sass' },
+    'sass',
   ],
 }

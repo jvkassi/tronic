@@ -1,0 +1,11 @@
+{
+  "main": "src/index.ts",
+  "dependencies": {
+    "@types/jquery": "^3.3.2",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "tronic": "^1.0.14",
+    "tronic-plugin-typescript": "^1.0.1"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "devDependencies": {
     "tronic": "^1.0.14",
-    "tronic-plugin-sass": "^1.0.3"
+    "tronic-plugin-json": "^1.0.2"
   }
 }

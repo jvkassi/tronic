@@ -31,16 +31,9 @@
     "yargs": "^11.0.0"
   },
   "devDependencies": {
-    "@tronite/eslint-config": "^1.0.3",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.3",
-    "babel-preset-env": "^1.7.0",
-    "eslint": "^4.19.1",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.9.1",
-    "np": "^3.0.4"
+    "np": "^3.0.4",
+    "tronic-plugin-babel": "^1.0.4",
+    "tronic-plugin-eslint": "^1.0.3"
   }
 }

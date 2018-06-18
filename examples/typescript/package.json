@@ -1,5 +1,9 @@
 {
   "main": "src/index.ts",
+  "scripts": {
+    "build": "tronic build",
+    "start": "tronic"
+  },
   "dependencies": {
     "@types/jquery": "^3.3.2",
     "jquery": "^3.3.1"

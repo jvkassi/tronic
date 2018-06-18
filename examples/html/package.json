@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "build": "tronic build",
+    "start": "tronic"
+  },
   "devDependencies": {
     "tronic": "latest",
     "tronic-plugin-html": "latest"

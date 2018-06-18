@@ -1,6 +1,6 @@
 {
   "name": "tronic",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Framework-agnostic webpack bundler with sensible defaults",
   "homepage": "https://github.com/tronite/tronic#readme",
   "bugs": {

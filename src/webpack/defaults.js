@@ -32,4 +32,8 @@ export default {
   resolve: {
     extensions: ['.js'],
   },
+  stats: {
+    chunks: false,
+    colors: true,
+  },
 }

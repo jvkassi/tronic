@@ -1,24 +1,33 @@
-import ora from 'ora'
 import webpack from 'webpack'
 import yargs from 'yargs'
-import { config, output } from '../webpack'
+import { config } from '../webpack'
 
-// Set watch flag
-yargs.option('watch', {
-  alias: 'w',
-  default: false,
-})
+// Set flags
+yargs.option('watch', { alias: 'w', default: false })
+
+/**
+ * Display compilation output
+ * @param {string} err
+ * @param {Object} stats
+ */
+function callback(err, stats) {
+  if (err) {
+    console.log(err)
+    return
+  }
+
+  console.log(stats.toString(config.stats))
+}
 
 /**
  * Build bundle to disk
  */
 export default function build() {
-  const spinner = ora('Bundling').start()
   const compiler = webpack(config)
   // Run watcher
   if (yargs.argv.watch) {
-    return compiler.watch({}, output.bind(null, spinner))
+    return compiler.watch({}, callback)
   }
   // Run one-off build
-  return compiler.run(output.bind(null, spinner))
+  return compiler.run(callback)
 }

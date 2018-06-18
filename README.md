@@ -41,9 +41,26 @@ You can generate a one-off build using `npm run build`, and a watching build usi
 
 ## Configuration
 
-tronic ships with default webpack settings for popular use cases and can be extended by utilising the `tronic.config.js` file at the root of your project. tronic will then merge your local configuration with its webpack defaults to produce a bundle.
+tronic ships with webpack settings for popular use cases and can be extended by utilising the `tronic.config.js` file at the root of your project. tronic will merge your local configuration with its webpack defaults to produce a bundle. You may provide an object to be merged with the webpack defaults, or a function that extends the defaults and returns the updated config.
 
-You can further extend tronic with in-house and community-created plugins as below. Each plugin ships with its own set of defaults similar to the default webpack config that comes pre-built in tronic.
+```javascript
+module.exports = {
+  webpack: {
+    entry: 'index.js'
+  }
+}
+```
+
+```javascript
+module.exports = {
+  webpack: (config) => {
+    config.entry = 'index.js'
+    return config
+  }
+}
+```
+
+You can further extend tronic with in-house and community-created plugins as below. Each plugin ships with its own set of defaults and can be extended similar to how you'd extend the webpack config above.
 
 A list of available plugins exists at https://github.com/tronite/tronic-plugins.
 
@@ -53,20 +70,12 @@ module.exports = {
     'babel',
     'sass',
     { name: 'html', options: { htmlWebpackPlugin: { ... } } }
-  ],
-  webpack: {
-    devServer: {
-      contentBase: __dirname
-    },
-    output: {
-      path: __dirname
-    }
-  }
+  ]
 }
 ```
 
 ## Defaults
 
-Entrypoint is the `main` property in your `package.json` or `src/index.js` if that's missing
+tronic adheres to the `main` property in your `package.json` for the default entrypoint of the application. If that's not defined, it will use `src/index.js`.
 
-Bundle output happens in `dist` folder
+Similarly, the default bundle location is the `dist` folder.

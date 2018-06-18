@@ -1,11 +1,10 @@
 import merge from 'webpack-merge'
-import nodeModulesPath from 'node-modules-path'
 import requireIfExists from 'require-if-exists'
-import { resolve } from 'path'
+import findUp from 'find-up'
 import { defaults } from '../webpack'
 
 // Get config
-const tronic = requireIfExists(resolve(process.cwd(), 'tronic.config.js')) || {}
+const tronic = requireIfExists(findUp.sync('tronic.config.js')) || {}
 tronic.webpack = tronic.webpack || {}
 tronic.plugins = tronic.plugins || []
 
@@ -16,7 +15,7 @@ let config = merge(defaults, tronic.webpack)
 tronic.plugins.forEach((plugin) => {
   const isObject = typeof plugin === 'object'
   const name = `tronic-plugin-${isObject ? plugin.name : plugin}`
-  const module = requireIfExists(resolve(nodeModulesPath(process.cwd()), name))
+  const module = requireIfExists(findUp.sync(`node_modules/${name}`))
   if (!module) {
     console.log(`Plugin "${name}" not installed`)
     return

@@ -1,10 +1,12 @@
 import merge from 'webpack-merge'
+import pkgDir from 'pkg-dir'
 import requireIfExists from 'require-if-exists'
-import { sync } from 'find-up'
 import { defaults } from '../webpack'
 
+const dir = pkgDir.sync()
+
 // Get config
-const tronic = requireIfExists(sync('tronic.config.js')) || {}
+const tronic = requireIfExists(`${dir}/tronic.config.js`) || {}
 let config = defaults
 
 // Load and initialise plugins in order
@@ -17,7 +19,7 @@ tronic.plugins.forEach((plugin) => {
     return
   }
   const name = `tronic-plugin-${identifier}`
-  const module = requireIfExists(sync(`node_modules/${name}`))
+  const module = requireIfExists(`${dir}/node_modules/${name}`)
   if (!module) {
     console.log(`Plugin "${name}" is not installed`)
     return

@@ -1,26 +1,28 @@
 import requireIfExists from 'require-if-exists'
-import { sync } from 'find-up'
+import pkgDir from 'pkg-dir'
+
+const dir = pkgDir.sync()
 
 // Set environment variables
 const env = process.env.NODE_ENV || 'development'
 const isDev = env === 'development'
 
 // Set application entrypoint based on package.json
-const pkg = requireIfExists(sync('package.json'))
+const pkg = requireIfExists(`${dir}/package.json`)
 const entry = pkg.main || 'src/index.js'
 
 export default {
   devServer: {
     compress: true,
-    contentBase: sync('dist'),
+    contentBase: `${dir}/dist`,
     port: 9000,
   },
   devtool: isDev ? 'cheap-module-source-map' : false,
   cache: true,
   mode: env,
-  entry: [sync(entry)],
+  entry: [`${dir}/${entry}`],
   output: {
-    path: sync('dist'),
+    path: `${dir}/dist`,
     filename: 'bundle.js',
   },
   target: 'web',

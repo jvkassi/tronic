@@ -1,11 +1,7 @@
 {
   "extends": "@tronite",
-  "parser": "babel-eslint",
   "rules": {
-    "global-require": "off",
-    "import/no-dynamic-require": "off",
     "import/no-mutable-exports": "off",
-    "no-console": "off",
-    "no-empty": "off"
+    "no-console": "off"
   }
 }

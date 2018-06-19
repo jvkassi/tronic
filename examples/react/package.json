@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "build": "tronic build",
+    "start": "tronic"
+  },
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.24.1",
+    "tronic": "latest",
+    "tronic-plugin-babel": "latest",
+    "tronic-plugin-html": "latest"
+  }
+}

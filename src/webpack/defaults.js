@@ -11,11 +11,19 @@ const isDev = env === 'development'
 const pkg = requireIfExists(`${dir}/package.json`)
 const entry = pkg.main || 'src/index.js'
 
+const stats = {
+  all: false,
+  errors: true,
+  moduleTrace: true,
+  colors: true,
+}
+
 export default {
   devServer: {
     compress: true,
     contentBase: `${dir}/dist`,
     port: 9000,
+    stats,
   },
   devtool: isDev ? 'cheap-module-source-map' : false,
   cache: true,
@@ -34,8 +42,5 @@ export default {
   resolve: {
     extensions: ['.js'],
   },
-  stats: {
-    chunks: false,
-    colors: true,
-  },
+  stats,
 }

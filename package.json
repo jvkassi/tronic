@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "dotenv": "^6.0.0",
+    "ora": "^2.1.0",
     "pkg-dir": "^3.0.0",
     "require-if-exists": "^1.0.0",
     "webpack": "^4.12.0",

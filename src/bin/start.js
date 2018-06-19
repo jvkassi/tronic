@@ -7,6 +7,7 @@ import { config } from '../webpack'
  */
 function callback() {
   console.log(`Starting server on http://localhost:${config.devServer.port}`)
+  console.log()
 }
 
 /**

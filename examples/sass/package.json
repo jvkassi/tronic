@@ -5,6 +5,7 @@
   },
   "devDependencies": {
     "tronic": "latest",
+    "tronic-plugin-html": "latest",
     "tronic-plugin-sass": "latest"
   }
 }

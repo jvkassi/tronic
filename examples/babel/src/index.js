@@ -1,4 +1,4 @@
-import cowsay from 'cowsay'
+import cowsay from 'cowsay-browser'
 
 console.log(
   cowsay.say({

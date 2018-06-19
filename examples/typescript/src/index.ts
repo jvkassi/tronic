@@ -1,3 +1,3 @@
-import $ from 'jquery'
+import * as $ from 'jquery'
 
 console.log($)

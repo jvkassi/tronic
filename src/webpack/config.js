@@ -9,22 +9,18 @@ const dir = pkgDir.sync()
 const tronic = requireIfExists(`${dir}/tronic.config.js`) || {}
 let config = defaults
 
-// Load and initialise plugins in order
+// Load and initialise plugins
 tronic.plugins = tronic.plugins || []
 tronic.plugins.forEach((plugin) => {
-  const isObject = typeof plugin === 'object'
-  const identifier = isObject ? plugin.name : plugin
-  if (!identifier) {
-    console.log('Plugin identifier missing')
-    return
+  if (typeof plugin === 'string') {
+    plugin = { name: plugin }
   }
-  const name = `tronic-plugin-${identifier}`
+  const name = `tronic-plugin-${plugin.name}`
   const module = requireIfExists(`${dir}/node_modules/${name}`)
   if (!module) {
-    console.log(`Plugin "${name}" is not installed`)
-    return
+    throw new Error(`Plugin "${name}" is not installed`)
   }
-  config = module(config, isObject ? plugin.options : undefined)
+  config = module(config, plugin.options)
 })
 
 // Deep merge config with defaults and plugins

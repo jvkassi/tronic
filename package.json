@@ -17,7 +17,7 @@
     "url": "git+https://github.com/tronite/tronic.git"
   },
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint src examples",
     "prepare": "rm -rf dist && babel src -d dist",
     "release": "npm run lint && np"
   },

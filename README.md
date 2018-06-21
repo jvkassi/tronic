@@ -1,6 +1,8 @@
 # tronic
 
-tronic is a framework-agnostic webpack bundler with sensible defaults
+tronic is a framework-agnostic webpack bundler with sensible defaults, aimed at reducing configuration and the amount of dependencies needed to be installed.
+
+For an introduction and explanation behind the inspiration, please feel free to read [this Medium article](https://medium.com/richard-solomou/introducing-tronic-webpack-with-sensible-defaults-260c61ab062f).
 
 ## Getting started
 
@@ -9,20 +11,6 @@ Install with npm:
 ```bash
 npm install --save-dev tronic
 ```
-
-Run watcher:
-
-```bash
-tronic
-```
-
-Run one-off build:
-
-```bash
-tronic build
-```
-
-## Setup
 
 Add the following scripts to your `package.json`:
 
@@ -35,7 +23,7 @@ Add the following scripts to your `package.json`:
 }
 ```
 
-You can then start the development server using `npm start`.
+You can start the development server using `npm start`.
 
 You can generate a one-off build using `npm run build`, and a watching build using `npm run build -- --watch` or `npm run build -- -w`.
 
@@ -60,9 +48,11 @@ module.exports = {
 }
 ```
 
+## Plugins
+
 You can further extend tronic with in-house and community-created plugins as below. Each plugin ships with its own set of defaults and can be extended similar to how you'd extend the webpack config above.
 
-A list of available plugins exists at https://github.com/tronite/tronic-plugins.
+A list of available plugins can be found at https://github.com/tronite/tronic-plugins.
 
 ```javascript
 module.exports = {
@@ -79,3 +69,5 @@ module.exports = {
 tronic adheres to the `main` property in your `package.json` for the default entrypoint of the application. If that's not defined, it will use `src/index.js`.
 
 Similarly, the default bundle location is the `dist` folder.
+
+For a further look into preset defaults, please take a look at [defaults.js](https://github.com/tronite/tronic/blob/master/src/webpack/defaults.js).

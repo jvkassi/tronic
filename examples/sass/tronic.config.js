@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    'sass',
-    'html',
+    'tronic-plugin-sass',
+    'tronic-plugin-html',
   ],
 }

@@ -7,7 +7,7 @@ tronic is a framework-agnostic webpack bundler with sensible defaults
 Install with npm:
 
 ```bash
-npm install -D tronic
+npm install --save-dev tronic
 ```
 
 Run watcher:
@@ -67,9 +67,9 @@ A list of available plugins exists at https://github.com/tronite/tronic-plugins.
 ```javascript
 module.exports = {
   plugins: [
-    'babel',
-    'sass',
-    { name: 'html', options: { htmlWebpackPlugin: { ... } } }
+    'tronic-plugin-babel',
+    'tronic-plugin-sass',
+    { name: 'tronic-plugin-html', options: { htmlWebpackPlugin: { ... } } }
   ]
 }
 ```

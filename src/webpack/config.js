@@ -15,10 +15,9 @@ tronic.plugins.forEach((plugin) => {
   if (typeof plugin === 'string') {
     plugin = { name: plugin }
   }
-  const name = `tronic-plugin-${plugin.name}`
-  const module = requireIfExists(`${dir}/node_modules/${name}`)
+  const module = requireIfExists(`${dir}/node_modules/${plugin.name}`)
   if (!module) {
-    throw new Error(`Plugin "${name}" is not installed`)
+    throw new Error(`Plugin "${plugin.name}" is not installed`)
   }
   config = module(config, plugin.options)
 })

@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    'css',
-    'html',
+    'tronic-plugin-css',
+    'tronic-plugin-html',
   ],
 }

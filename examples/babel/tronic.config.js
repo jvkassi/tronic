@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    'babel',
-    'html',
+    'tronic-plugin-babel',
+    'tronic-plugin-html',
   ],
 }
